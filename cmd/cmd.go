@@ -52,10 +52,6 @@ func runDockerPs() {
 	cmd.Run()
 }
 
-func runDockerExec() {
-	fmt.Println("exec: 実装予定です")
-}
-
 func runDockerStop() {
 	fmt.Println("stop: 実装予定です")
 }
