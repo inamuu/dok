@@ -16,7 +16,13 @@
 
 ## Installation
 
-```
+### Prerequisites
+
+- [Go](https://golang.org/doc/install)
+- [peco](https://github.com/peco/peco) — Required for interactive selection
+
+```bash
+brew install peco
 go install github.com/inamuu/dok@latest
 ```
 
