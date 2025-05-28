@@ -56,10 +56,6 @@ func runDockerExec() {
 	fmt.Println("exec: 実装予定です")
 }
 
-func runDockerRm() {
-	fmt.Println("rm: 実装予定です")
-}
-
 func runDockerRmi() {
 	fmt.Println("rmi: 実装予定です")
 }
