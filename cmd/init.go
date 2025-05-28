@@ -19,8 +19,6 @@ It creates a default configuration file and necessary directories for Dok to fun
 
 		if _, err := os.Stat(configFile); os.IsNotExist(err) {
 			content := `[Commands]
-sh
-bash
 /bin/sh
 /bin/bash
 ls -la
