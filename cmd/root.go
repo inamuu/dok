@@ -13,7 +13,7 @@ var rootCmd = &cobra.Command{
 	Long: `Dok is a command-line tool that simplifies the management of Docker containers.
 It provides a set of commands to create, start, stop, and remove containers easily.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Welcome to Dok! Use 'dok --help' to see available commands.")
+		mainMenu()
 	},
 }
 
