@@ -8,6 +8,7 @@
   - バージョンが表示される
 - dok help
   - help が表示されて、各コマンドの詳細な説明が表示される
+    - Cobra標準のhelpを使用
 - dok のみを実行したら、dockerコマンドが選択できる, なお、選択肢はすべてpecoで選択できるものとする
   - ps
     - CONTAINER ID, IMAGE, COMMAND, CREATED, STATUS, PORTS, NAMES, ALL(すべて表示, docker ps と同じ) が選択できる
@@ -29,3 +30,8 @@
   - start
     - コンテナのイメージ名を選択する
     - コンテナを起動する
+  - run
+    - コンテナのイメージ名を選択する
+    - src, dstポートを指定
+    - 実行コマンドをconfigから選択、もしくは無し
+    - コンテナを起動

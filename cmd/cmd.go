@@ -8,8 +8,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var cmdCmd = &cobra.Command{
-	Use:   "cmd",
+var dockerCmd = &cobra.Command{
+	Use:   "docker",
 	Short: "Interactive docker command selector",
 	Run: func(cmd *cobra.Command, args []string) {
 		mainMenu()
@@ -17,11 +17,11 @@ var cmdCmd = &cobra.Command{
 }
 
 func init() {
-	rootCmd.AddCommand(cmdCmd)
+	rootCmd.AddCommand(dockerCmd)
 }
 
 func mainMenu() {
-	options := []string{"ps", "exec", "rm", "rmi", "stop", "start"}
+	options := []string{"ps", "exec", "rm", "rmi", "run", "stop", "start"}
 	choice, err := internal.SelectWithPeco(options)
 	if err != nil {
 		fmt.Println("peco error:", err)
@@ -37,6 +37,8 @@ func mainMenu() {
 		runDockerRm()
 	case "rmi":
 		runDockerRmi()
+	case "run":
+		runDockerRun()
 	case "stop":
 		runDockerStop()
 	case "start":
