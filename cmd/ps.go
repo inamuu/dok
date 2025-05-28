@@ -8,29 +8,25 @@ import (
 )
 
 var psCmd = &cobra.Command{
-	Use:   "rmi",
-	Short: "Remove a Docker image",
+	Use:   "ps",
+	Short: "Show docker containers",
 	Run: func(cmd *cobra.Command, args []string) {
-		runDockerPs()
+		choice, err := internal.SelectWithPeco([]string{"running", "all"})
+		if err != nil {
+			return
+		}
+
+		args = []string{"ps"}
+		if choice == "all" {
+			args = append(args, "-a")
+		}
+
+		psCmd := exec.Command("docker", args...)
+		psCmd.Stdin, psCmd.Stdout, psCmd.Stderr = internal.StdStreams()
+		psCmd.Run()
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(rmCmd)
-}
-
-func runDockerPs() {
-	choice, err := internal.SelectWithPeco([]string{"running", "all"})
-	if err != nil {
-		return
-	}
-
-	args := []string{"ps"}
-	if choice == "all" {
-		args = append(args, "-a")
-	}
-
-	cmd := exec.Command("docker", args...)
-	cmd.Stdin, cmd.Stdout, cmd.Stderr = internal.StdStreams()
-	cmd.Run()
+	rootCmd.AddCommand(psCmd)
 }
