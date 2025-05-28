@@ -65,6 +65,11 @@ func runDockerRun() {
 	srcPort = strings.TrimSpace(srcPort)
 	dstPort = strings.TrimSpace(dstPort)
 
+	// 名前設定
+	fmt.Print("Enter container name: ")
+	containerName, _ := reader.ReadString('\n')
+	containerName = strings.TrimSpace(containerName)
+
 	// コマンド選択
 	usr, _ := user.Current()
 	configPath := filepath.Join(usr.HomeDir, ".dok.config")
@@ -87,6 +92,9 @@ func runDockerRun() {
 	}
 	if srcPort != "" && dstPort != "" {
 		argsRun = append(argsRun, "-p", fmt.Sprintf("%s:%s", srcPort, dstPort))
+	}
+	if containerName != "" {
+		argsRun = append(argsRun, "--name", containerName)
 	}
 	argsRun = append(argsRun, image)
 	if selectedCommand != "" {
