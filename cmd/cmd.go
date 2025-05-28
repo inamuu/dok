@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"fmt"
-	"os/exec"
 
 	"github.com/inamuu/dok/internal"
 	"github.com/spf13/cobra"
@@ -44,12 +43,6 @@ func mainMenu() {
 	case "start":
 		runDockerStart()
 	}
-}
-
-func runDockerPs() {
-	cmd := exec.Command("docker", "ps")
-	cmd.Stdin, cmd.Stdout, cmd.Stderr = internal.StdStreams()
-	cmd.Run()
 }
 
 func runDockerStop() {
